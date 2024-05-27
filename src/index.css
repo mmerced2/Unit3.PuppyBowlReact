@@ -1,0 +1,27 @@
+
+
+.player{
+  cursor: pointer;
+}
+
+form {
+  margin: 5px;
+  border: 0.2vw solid black;
+  padding: 1vw;
+  border-radius: 1vw;
+  border-radius: 1vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 10vw;
+  height: 30vw;
+  background-color: cornflowerblue;
+  text-align: center;
+
+}
+
+
+#searchbar {
+  position: relative;
+  text-align: right;
+} 
+
