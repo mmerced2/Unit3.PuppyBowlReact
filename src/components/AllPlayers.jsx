@@ -10,22 +10,24 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import deletePlayer from "./DeletePlayer";
 import CircularProgress from '@mui/material/CircularProgress';
-import SearchBar from './SearchBar'
 
 
  const AllPlayers = () => {
     const [players, setAllPlayers] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState()
     const navigate = useNavigate()
-    const searchTerm = useSelector(state => state.searchTerm)
-    
-    const filteredPlayers = players.filter(player=> player.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    const [searchParam, setSearchParam] = useState("");
 
+    
+    const filteredPlayers = searchParam ? players.filter((player) =>
+        player.name.toLowerCase().includes(searchParam/toLowerCase())
+        )
+        : players;
 
     useEffect(()=>{
         async function getData(){
             try{
-                const response = await fetch('https://fsa-puppy-bowl.herokuapp.com/api/2402-FTB-ET-WEB-PT/players')
+                const response = await fetch('https://fsa-puppy-bowl.herokuapp.com/api/2403-FTB-ET-WEB-PT/players')
                 const data = await response.json()
                 setAllPlayers(data.data.players)
                 setLoading(false)
@@ -45,15 +47,15 @@ import SearchBar from './SearchBar'
  
   return (
     <div>
-    <SearchBar id="searchbar"/>
+   
   
    <Grid container spacing={3} justify="center" alignItems="center">
-
+ 
         {filteredPlayers?.map((player)=>{
             
             return (<div className="player" key={player.id} onClick={()=>navigate(`/player/${player.id}`)}>
-                    <Grid item key={player.id} xs={12} sm={12} md={12}  >
-                    <Grid item xs={12}>
+                    <Grid item="true" key={player.id} xs={12} sm={12} md={12}  >
+                    <Grid item="true" xs={12}>
                     <Card>
                     <CardContent>
                     <CardMedia component="img"  height="150" image={player.imageUrl || "https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/dog-face.jpg"} alt={player.name}/>
@@ -72,10 +74,10 @@ import SearchBar from './SearchBar'
                     <Grid container spacing={1} justifyContent="center">
                     <CardActions>
 
-                    <Grid item>
+                    <Grid item="true">
                     <Button size="small" key={player.id} onClick={()=>navigate(`/player/${player.id}`)}>View Details </Button>
                     </Grid>
-                    <Grid item>
+                    <Grid item="true">
                     <Button size="small" onClick={() => deletePlayer(player.id)}>Delete Player</Button>
                     </Grid>
                     </CardActions>

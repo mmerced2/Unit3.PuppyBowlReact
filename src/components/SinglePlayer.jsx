@@ -20,7 +20,7 @@ const SinglePlayer = () => {
     useEffect(() => {
         async function getData() {
             try {
-                const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2402-FTB-ET-WEB-PT/players/${id}`)
+                const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2403-FTB-ET-WEB-PT/players/${id}`)
                 const data = await response.json()
                 if (!response.ok) {
                     throw new Error("Player not found")
@@ -67,7 +67,7 @@ const SinglePlayer = () => {
                     <Grid container spacing={1} justifyContent="center">
                     <CardActions>
 
-                    <Grid item>
+                    <Grid item="true">
                     <Button variant="contained" color="primary" onClick={() => navigate(-1)}>Back to All Players</Button>
                     </Grid>
                     </CardActions>

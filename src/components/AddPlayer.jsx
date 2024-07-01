@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 
 
 export default function AddPlayer() {
@@ -22,7 +20,7 @@ export default function AddPlayer() {
     console.log(formData);
     try {
       const response = await fetch(
-        "https://fsa-puppy-bowl.herokuapp.com/api/2402-FTB-ET-WEB-PT/players",
+        "https://fsa-puppy-bowl.herokuapp.com/api/2403-FTB-ET-WEB-PT/players",
         {
           method: "POST",
           body: JSON.stringify(),
